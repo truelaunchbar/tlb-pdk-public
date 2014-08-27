@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skin width="267" height="117">
+    <image x="0" y="0">
+        <state value="normal" file="bg.png" states="1"/>
+    </image>
+
+    <text src="name" font="Arial" x="13" y="10" width="241" height="34" bold="true" glowSize="2">
+        <state value="normal" color="FFFFFF" glowColor="000000" />
+    </text>
+
+    <text src="message" font="Arial" x="23" y="47" width="231" height="60" fontSize="20" singleLine="false" bold="false" glowSize="2">
+        <state value="normal" color="FFFFA1" glowColor="000000" />
+    </text>
+
+    <image x="237" y="0" command="close" >
+        <mod value="0" file="close.png" states="3"/>
+    </image>
+
+    <image x="237" y="30" command="restart" >
+        <mod value="0" file="restart.png" states="3"/>
+    </image>
+</skin>

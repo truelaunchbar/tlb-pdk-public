@@ -1,0 +1,148 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1251)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// XUILIB
+//
+
+PROPERTIES.XML          XUILIB                  "xuilib\\properties.xml"
+TIMER.XML               XUILIB                  "xuilib\\timer.xml"
+ABOUT.PNG               XUILIB                  "xuilib\\images\\about.png"
+OPTIONS.PNG             XUILIB                  "xuilib\\images\\options.png"
+LOGO.PNG                XUILIB                  "xuilib\\images\\logo.png"
+SKIN.PNG                XUILIB                  "xuilib\\images\\skins.png"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// SKIN
+//
+
+START.PNG               SKIN                    "defskin\\start.png"
+STOP.PNG                SKIN                    "defskin\\stop.png"
+NOTIFY.PNG              SKIN                    "defskin\\notify.png"
+NOTIFY-CLOSE.PNG        SKIN                    "defskin\\notify-close.png"
+NOTIFY-RESTART.PNG      SKIN                    "defskin\\notify-restart.png"
+MENU-BTN.PNG            SKIN                    "defskin\\menu-btn.png"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,0
+ PRODUCTVERSION 1,0,0,0
+ FILEFLAGSMASK 0x17L
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "000004b0"
+        BEGIN
+            VALUE "CompanyName", "Tordex"
+            VALUE "FileDescription", "Timer plugin for True Launch Bar"
+            VALUE "FileVersion", "1, 0, 0, 0"
+            VALUE "InternalName", "timer"
+            VALUE "LegalCopyright", "Copyright (C) 2011 Tordex"
+            VALUE "OriginalFilename", "timer.dll"
+            VALUE "ProductName", "Timer plugin for True Launch Bar"
+            VALUE "ProductVersion", "1, 0, 0, 0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ADD                 ICON                    "res\\add.ico"
+IDI_TIMER               ICON                    "res\\timer.ico"
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Russian resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
+#ifdef _WIN32
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+#pragma code_page(1251)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // Russian resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

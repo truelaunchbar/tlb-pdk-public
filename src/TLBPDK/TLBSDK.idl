@@ -1,0 +1,206 @@
+// TLBSDK.idl : IDL source for TLBSDK.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (TLBSDK.tlb) and marshalling code.
+
+//import "oaidl.idl";
+//import "ocidl.idl";
+
+[
+	uuid(F4AE89C5-1320-4083-BB11-844902A7188F),
+	version(1.0),
+	helpstring("TLBPDK 1.0 Type Library")
+]
+library TLBPDKLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	typedef struct tagDRAW_TEXT
+	{
+		HDC			hdc;
+		LPCWSTR		text;
+		int			count;
+		RECT		rcDraw;
+		UINT		dtParams;
+		HFONT		hFont;
+		UINT		flags;
+		COLORREF	textColor;
+		COLORREF	glowColor;
+		int			glowSize;
+	} DRAW_TEXT;
+
+	typedef struct tagGET_HEIGHT
+	{
+		int			width;
+		int			defHeight;
+		HDC			hdc;
+		int			outHeight;
+	} GET_HEIGHT;
+
+	typedef enum tagCONTAINER_STYLE
+	{
+		CTS_LARGEICONS	= 0x1,
+		CTS_ISMENU		= 0x2,
+		CTS_SHOWARROWS	= 0x4,
+		CTS_SHOWTEXT	= 0x8
+	} CONTAINER_STYLE;
+
+	typedef struct tagENUM_CHILDS
+	{
+		LPTSTR		Name;
+		LPVOID		childData;
+		LPVOID		enumData;
+	} ENUM_CHILDS;
+
+	typedef struct tagENUM_CHILDS_F
+	{
+		LPTSTR		Name;
+		LPVOID		childData;
+		LPVOID		enumData;
+		LPTSTR		filter;
+		HANDLE		hStopEvent;
+	} ENUM_CHILDS_F;
+
+	typedef struct tagCONTAINER_PARAMS_V1
+	{
+		int			cbSize;
+		int			dwViewMode;
+		int			style;
+		COLORREF	bkColor;
+		HANDLE		hItemFont;
+		DWORD		dwLCID;
+	} CONTAINER_PARAMS_V1;
+
+	typedef struct tagCONTAINER_PARAMS_V2
+	{
+		int			cbSize;
+		int			dwViewMode;
+		int			style;
+		COLORREF	bkColor;
+		HANDLE		hItemFont;
+		DWORD		dwLCID;
+		DWORD		dwIconSize;
+	} CONTAINER_PARAMS_V2;
+
+	typedef struct tagCONTAINER_PARAMS
+	{
+		int			cbSize;
+		int			dwViewMode;
+		int			style;
+		COLORREF	bkColor;
+		HANDLE		hItemFont;
+		DWORD		dwLCID;
+		DWORD		dwIconSize;
+	} CONTAINER_PARAMS;
+
+	typedef struct tagBUTTONINFO
+	{
+		DWORD		dwMask;
+		DWORD		dwModeFlags;
+		DWORD		dwActions;
+		SIZE		szBtnSize;
+		HICON		hIcon;
+		char		strData[500];
+	} BUTTONINFO;
+
+	typedef struct tagHKM_DATA
+	{
+		DWORD	id;
+		WCHAR	name[260];
+		WORD	hotKey;
+		DWORD	hotKeyID;
+	} HKM_DATA;
+
+	typedef struct tagDROP_OBJECT
+	{
+		IDataObject*	obj;
+		DWORD			dwKeys;
+		DWORD			dropEffect;
+	} DROP_OBJECT;
+
+	typedef struct tagDIB_IMAGE
+	{
+		int			img_id;
+		void*		bits;
+		int			width;
+		int			height;
+		BOOL		redraw_on_ready;
+	} DIB_IMAGE;
+
+	[
+		uuid(b079767b-8c8a-434c-b59b-bbb399c4e4a6),
+		version(1.0)
+	]
+	interface ITlbContainer : IUnknown
+	{
+		[id(1)]  HRESULT GetParams([out, retval] CONTAINER_PARAMS* retVal);
+		[id(2)]  HWND GetBandWND();
+		[id(3)]  HRESULT SaveButton();
+		[id(4)]  DWORD GetLCID();
+		[id(5)]  HRESULT GetIconPoint(POINT* ptIcon);
+		[id(6)]	 HRESULT DrawItemText(HANDLE dc, LPRECT rc, LPCSTR text);
+		[id(7)]  HRESULT GetTextProps(LPRECT rcMargins, COLORREF* color);
+		[id(8)]	 HRESULT UpdateButtonInfo(int flags);
+		[id(9)]  HRESULT Invoke(DWORD id, WPARAM wParam, LPARAM lParam);
+	};
+
+	[
+		uuid(ab1982df-9da2-4fb4-9695-f23fb1f6e85f),
+		version(1.0)
+	]
+	interface ITlbButton : IUnknown
+	{
+		[id(1)]  HRESULT Load(IStream* data);
+		[id(2)]  HRESULT Save(IStream* data);
+		[id(3)]  HRESULT SetRect([in] RECT* rcItem);
+		[id(4)]  HRESULT SetContainer(ITlbContainer* cont);
+		[id(5)]  HRESULT SetID(int btnID);
+		[id(6)]  HRESULT Draw(HANDLE hDC, [in] RECT* rcItem);
+		[id(7)]  HRESULT OnMouseOver(long keys, int x, int y);
+		[id(8)]  HRESULT OnMouseLeave(long keys);
+		[id(9)] HRESULT OnMouseEnter(long keys, int x, int y);
+		[id(10)] HRESULT Create(IStream* data);
+		[id(11)] HRESULT StateChanged(int state, [out, retval] int* needRedraw);
+		[id(12)] HRESULT OnLButtonDown(long key, int x, int y);
+		[id(13)] HRESULT OnLButtonUp(long key, int x, int y);
+		[id(14)] HRESULT Run();
+		[id(15)] HRESULT DoAction(int action);
+		[id(16)] HRESULT SetName([in] LPCSTR szName);
+		[id(17)] int QueryContextMenu(HMENU hMenu, int index, int cmdFirst, int cmdLast);
+		[id(18)] HRESULT InvokeCommand(int ID);
+		[id(19)] HRESULT SetLCID(DWORD dwLCID, HMODULE hResModule);
+		[id(20)] HRESULT GetIconLocation([in, out] LPSTR szLocation);
+		[id(21)] HRESULT SetIconLocation([in] LPCSTR szLocation);
+		[id(22)] HRESULT GetButtonInfo([in, out] BUTTONINFO* btninfo);
+		[id(23)] HRESULT Invoke(DWORD id, WPARAM wParam, LPARAM lParam);
+	};
+
+	typedef struct tagCREATE_CHILDS
+	{
+		ITlbButton*	parent;
+		LPVOID		childData;
+		ITlbButton*	child;
+	} CREATE_CHILDS;
+
+	typedef struct tagCOMPARE_BUTTONS
+	{
+		ITlbButton*	btn1;
+		ITlbButton*	btn2;
+		UINT		fnc;
+		int			result;
+	} COMPARE_BUTTONS;
+
+	typedef struct tagDRAW_TIPS_ICON
+	{
+		HDC		hDC;
+		POINT	pt;
+	} DRAW_TIPS_ICON;
+
+	typedef struct tagQUERY_ARRANGE_MENU
+	{
+		int		sortID;
+		LPTSTR	name;
+	} QUERY_ARRANGE_MENU;
+};

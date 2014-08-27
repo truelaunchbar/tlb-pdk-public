@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skin width="32" height="32">
+    <imagePieChart x="0" y="0" width="32" height="32" startAngle="-90" command="stop" >
+        <value src="time-pass">
+            <state value="normal" file="bg-2.png"/>
+        </value>
+        <value src="time-left">
+            <state value="normal" file="bg-1.png"/>
+        </value>
+    </imagePieChart>
+
+    <rotateImage src="time-left" total="time" x="16" y="16" width="32" height="32" rotateX="16" rotateY="16" startAngle="0" endAngle="-360">
+        <state value="normal" file="hand.png"/>
+    </rotateImage>
+</skin>

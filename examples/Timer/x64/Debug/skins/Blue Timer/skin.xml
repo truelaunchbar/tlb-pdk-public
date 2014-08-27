@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skin width="76" height="76">
+    <image command="startstop" x="0" y="0" >
+        <mod value="0" file="bg.png" states="1"/>
+    </image>
+    
+    <text src="time-left" mod="started" x="0" y="43" width="76" height="12" font="Arial" align="center" antialias="true" bold="false" italic="false" glowSize="0">
+        <mod value="0" color="FFFFFF"/>
+        <mod value="1" color="FF0000"/>
+    </text>
+    
+    <rotateImage src="time-left" total="time" x="38" y="38" width="76" height="76" rotateX="38" rotateY="38" startAngle="0" endAngle="-360">
+        <mod value="0" file="hand.png"/>
+    </rotateImage>
+    
+    <image x="0" y="0" >
+        <mod value="0" file="dot.png" states="1"/>
+    </image>
+    
+    <image x="0" y="0" >
+        <mod value="0" file="glass.png" states="1"/>
+    </image>
+</skin>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skin width="162" height="36">
+    <image x="0" y="0" >
+        <mod value="0" file="bg.png" states="2"/>
+    </image>
+
+    <hRowChart command="startstop" x="2" y="2" width="94" height="32">
+        <value src="time-pass">
+            <state value="normal" >
+                <brush type="yGradient" color1="00FF00" color2="00b400"/>
+                <pen type="solid" color="000000"/>
+            </state>
+        </value>
+        <value src="time-left">
+            <state value="normal" >
+                <brush type="solid" color="00000000"/>
+            </state>
+        </value>
+    </hRowChart>
+
+    <text src="name" x="4" y="0" width="94" height="18" font="Tahoma" antialias="true" bold="false" italic="false" glowSize="2">
+        <state value="normal" color="FFFFFF" glowColor="000000"/>
+    </text>
+
+    <text src="time-left" mod="started" x="4" y="14" width="94" height="24" font="Arial" antialias="true" bold="true" italic="false" glowSize="2">
+        <mod value="0">
+            <state value="normal" color="FFFFFF" glowColor="000000"/>
+        </mod>
+        <mod value="1">
+            <state value="normal" color="ffa1a1" glowColor="000000"/>
+        </mod>
+    </text>
+
+    <image command="edit" x="96" y="2" >
+        <mod file="edit.png" states="3"/>
+    </image>
+
+    <image command="delete" x="128" y="2" >
+        <mod file="delete.png" states="3"/>
+    </image>
+</skin>

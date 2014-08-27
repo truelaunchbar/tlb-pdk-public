@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skin width="192" height="36">
+
+    <imageText src="time-left" command="edit" x="0" y="0" width="156" height="36">
+        <alphabet text="0123456789">
+            <state value="normal" file="flip-white.png"  vertical="true"/>
+        </alphabet>
+        <alphabet text=":">
+            <state value="normal" file="dots.png"  vertical="true"/>
+        </alphabet>
+    </imageText>
+
+    <pieChart x="156" y="0" width="35" height="35" startAngle="-90">
+        <value src="time-pass">
+            <state value="normal">
+                <brush type="solid" color="0000FF"/>
+            </state>
+        </value>
+        <value src="time-left">
+            <state value="normal">
+                <brush type="solid" color="00000000"/>
+            </state>
+        </value>
+    </pieChart>
+
+    <image command="startstop" x="158" y="2" mod="started" >
+        <mod value="0" file="start.png" states="3"/>
+        <mod value="1" file="stop.png" states="3"/>
+    </image>
+</skin>

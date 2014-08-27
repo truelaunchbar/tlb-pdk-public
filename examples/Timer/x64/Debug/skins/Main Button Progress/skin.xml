@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skin width="60" height="18">
+    <rect command="stop" x="0" y="0" width="60" height="18">
+        <state value="normal">
+            <pen type="solid" color="FFFFFF"/>
+        </state>
+        <state value="over">
+            <pen type="solid" color="FFFFFF"/>
+            <brush type="solid" color="FFFFFFB4"/>
+        </state>
+    </rect>
+
+    <hRowChart x="0" y="0" width="60" height="18">
+        <value src="time-pass">
+            <state value="normal">
+                <brush type="yGradient" color1="00FF00" color2="00b400"/>
+                <pen type="solid" color="FFFFFF"/>
+            </state>
+        </value>
+        <value src="time-left" />
+    </hRowChart>
+    
+    <text src="time-left" align="center" x="0" y="0" width="60" height="18" font="Arial Rounded MT Bold" glowSize="2">
+        <state value="normal" color="FFFFFF" glowColor="000000"/>
+        <state value="over" color="000000" glowColor="FFFFFF"/>
+    </text>
+</skin>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skin width="16" height="32">
+    <image x="0" y="0" command="menu" >
+        <mod value="0" file="menu.png" states="3"/>
+    </image>
+
+    <image x="0" y="16" command="stopall" >
+        <mod value="0" file="cancel.png" states="3"/>
+    </image>
+</skin>

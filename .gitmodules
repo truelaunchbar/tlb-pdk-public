@@ -1,0 +1,24 @@
+[submodule "src/txdib"]
+	path = src/txdib
+	url = git@github.com:tordex/txdib.git
+[submodule "src/simpledib"]
+	path = src/simpledib
+	url = git@github.com:tordex/simpledib.git
+[submodule "src/freeimage"]
+	path = src/freeimage
+	url = git@github.com:tordex/freeimage.git
+[submodule "src/cairo"]
+	path = src/cairo
+	url = git@github.com:tordex/cairo.git
+[submodule "src/xuilib"]
+	path = src/xuilib
+	url = git@github.com:tordex/xuilib.git
+[submodule "src/tlbskinslib"]
+	path = src/tlbskinslib
+	url = git@github.com:tordex/tlbskinslib.git
+[submodule "src/httpReader"]
+	path = src/httpReader
+	url = git@github.com:tordex/httpReader.git
+[submodule "src/zlib"]
+	path = src/zlib
+	url = git@github.com:tordex/zlib.git

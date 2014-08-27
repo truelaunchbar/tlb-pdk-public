@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skin width="64" height="18">
+
+    <imageHRow command="stop" x="2" y="0" width="60" height="18" draw="crop">
+        <value src="time-pass">
+            <state value="normal" file="val.png" />
+        </value>
+        <value src="time-left">
+            <state value="normal" file="none" />
+            <state value="over" file="bg.png" />
+        </value>
+    </imageHRow>
+    
+    <text src="time-left" align="center" x="2" y="0" width="60" height="18" font="Arial Rounded MT Bold" glowSize="2">
+        <state value="normal" color="FFFFFF" glowColor="000000"/>
+        <state value="over" color="faff7b" glowColor="000000"/>
+    </text>
+</skin>
