@@ -3,7 +3,7 @@
 #include <windows.h>
 #include <comcat.h>
 #include <ole2.h>
-#include <tlbif.h>
+#include "tlbif.h"
 #include <olectl.h>
 
 #define HOTKEY_MOD_SHIFT	0x0100
@@ -195,6 +195,11 @@
 #define MENU_F_VARHEIGHT			0x00040
 #define MENU_F_DEFAULTWRAP			0x00080
 
+// for TBTN_INVOKE_GET_TIP_FLAGS
+#define TIP_F_INTERACTIVE			0x01
+#define TIP_F_FULL_HTML				0x02
+
+
 //Constants for ITlbButton::Invoke
 #define TBTN_INVOKE_GETTOOLTIPSCOUNT	1  // wParam ignored, (int*) lParam - tooltips count
 #define TBTN_INVOKE_GETTOOLTIPRECT		2  // wParam - zero based tooltip index, (RECT*) lParam - rectangle of tooltip
@@ -276,6 +281,10 @@
 
 #define TBTN_INVOKE_GETTIPIMAGE				65  // (LPCWSTR) wParam - image url, (DIB_IMAGE*) lParam
 #define TBTN_INVOKE_GETTIPSHTML				66  // wParam - zero based tooltip index, (LPWSTR*) lParam - Text of tooltip use CoTaskMemAlloc to allocate memory
+
+#define TBTN_INVOKE_GET_TIP_FLAGS			67  // wParam - zero based tooltip index, (UINT*) lParam - return flags TIP_F_*
+#define TBTN_INVOKE_ON_CLICK_TIP			68  // wParam - zero based tooltip index, (LPCWSTR) lParam - anchor url
+#define TBTN_INVOKE_GET_TIP_FULL_HTML		69  // wParam - zero based tooltip index, (LPWSTR*) lParam - Text of tooltip use CoTaskMemAlloc to allocate memory
 
 //Register
 extern BOOL RegisterPlugin(HINSTANCE g_hInst, CLSID clsid, LPSTR lpszTitle);

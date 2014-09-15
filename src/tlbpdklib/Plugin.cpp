@@ -1,5 +1,5 @@
 #include "tlbpdkcore.h"
-#include ".\plugin.h"
+#include "plugin.h"
 #include "tlbpdklib.h"
 #include <WindowsX.h>
 #include "tlbtext.h"
@@ -304,6 +304,20 @@ STDMETHODIMP CPlugin::Invoke(DWORD id, WPARAM wParam, LPARAM lParam)
 {
 	switch(id)
 	{
+	case TBTN_INVOKE_GET_TIP_FLAGS:
+		{
+			int idx = (int) wParam;
+			UINT* ret = (UINT*) lParam;
+			*ret = m_btn->GetTipFlags(idx);
+		}
+		return S_OK;
+	case TBTN_INVOKE_ON_CLICK_TIP:
+		{
+			int* idx = (int*) wParam;
+			LPCWSTR url = (LPCWSTR) lParam;
+			*idx = m_btn->OnTipClick(*idx, url);
+		}
+		return S_OK;
 	case TBTN_INVOKE_GETHEIGHT:
 		{
 			GET_HEIGHT* gh = (GET_HEIGHT*) lParam;
@@ -593,6 +607,13 @@ STDMETHODIMP CPlugin::Invoke(DWORD id, WPARAM wParam, LPARAM lParam)
 		{
 			LPWSTR* text = (LPWSTR*) lParam;
 			*text = m_btn->GetTipHTML(wParam);
+			if(!*text) return S_FALSE;
+		}
+		return S_OK;
+	case TBTN_INVOKE_GET_TIP_FULL_HTML:
+		{
+			LPWSTR* text = (LPWSTR*) lParam;
+			*text = m_btn->GetTipFullHTML(wParam);
 			if(!*text) return S_FALSE;
 		}
 		return S_OK;

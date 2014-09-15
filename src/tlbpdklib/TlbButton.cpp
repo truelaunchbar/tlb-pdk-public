@@ -85,6 +85,11 @@ LPWSTR CTlbButton::GetTipHTML(int tipID)
 	return NULL;
 }
 
+LPWSTR CTlbButton::GetTipFullHTML(int tipID)
+{
+	return NULL;
+}
+
 void CTlbButton::SetRect(LPRECT rcItem)
 {
 	m_rc = rcItem[0];
@@ -606,6 +611,17 @@ BOOL CTlbButton::OnSysChar( WPARAM wParam, LPARAM lParam )
 
 
 BOOL CTlbButton::OnSetCursor( WPARAM wParam, LPARAM lParam )
+{
+	return FALSE;
+}
+
+
+UINT CTlbButton::GetTipFlags( int tipID )
+{
+	return 0;
+}
+
+BOOL CTlbButton::OnTipClick( int tipID, LPCWSTR url )
 {
 	return FALSE;
 }

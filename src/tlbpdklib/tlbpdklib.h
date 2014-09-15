@@ -1,5 +1,7 @@
 #pragma once
 
+#include "..\TLBPDK\tlbpdk.h"
+
 // Interface to query container of plugin
 interface CTlbContainer
 {
@@ -152,12 +154,15 @@ public:
 	virtual void GetTipRect(int tipID, LPRECT rcTip);
 	virtual LPWSTR GetTipText(int tipID);
 	virtual LPWSTR GetTipHTML(int tipID);
+	virtual LPWSTR GetTipFullHTML(int tipID);
 	virtual LPWSTR GetTipCaption(int tipID);
 	virtual UINT GetSupportedActions();
 	virtual void GetButtonText(LPWSTR text);
 	virtual BOOL SupportSortMenu();
 	virtual HICON GetTipIcon(int tipID);
 	virtual void* GetTipImage(int tipID, LPCWSTR url, int& width, int& height, BOOL redraw_on_ready);
+	virtual UINT GetTipFlags(int tipID);
+	virtual BOOL OnTipClick(int tipID, LPCWSTR url);
 
 	virtual BOOL Save(IStream *data);
 	virtual BOOL Load(IStream *data);
@@ -232,84 +237,16 @@ public:
 
 // Macros
 
-//Hotkeys modifiers
-#define HOTKEY_MOD_SHIFT	0x0100
-#define HOTKEY_MOD_CONTROL	0x0200
-#define HOTKEY_MOD_ALT		0x0400
-#define HOTKEY_MOD_WIN		0x2000
-
-// Constants for parameter objID GetSavedPath 
-#define OT_ICONS			0x00	// saved icons
-#define OT_PLUGINFILES		0x01	// saved plugin files
-
-// Constants for GetModeFlags
-#define BTN_FLAG_PLANE				0x00000001	//button is flat (plane) useful for informational plugins
-#define BTN_FLAG_STOPDRAG			0x00000002	//disable drag&drop
-#define BTN_FLAG_NOTIPS				0x00000008	//disable tips on plugin button
-#define BTN_FLAG_SUPPORTSAVEDICON	0x00000010	//support saved icons
-#define BTN_FLAG_SUPPORTPNGICONS	0x00000020	//support PNG format for icons
-#define BTN_FLAG_INPLACERENAME		0x00000040
-#define BTN_FLAG_NOTEXT				0x00000100
-#define BTN_FLAG_NEED_R_CLICKS		0x00100000
-#define BTN_FLAG_NEED_L_DBLCLICK	0x00200000
-#define BTN_FLAG_DONTACTIVATE		0x00400000
-#define BTN_FLAG_SEPARATOR			0x00800000
-#define BTN_FLAG_NORUNSTRACK		0x01000000
-
-// Cosnants for GetSupportedActions
-#ifndef CTMS_PROPERTIES
-#define CTMS_PROPERTIES	0x0001		// Plugin support Properties
-#define CTMS_RENAME		0x0002		// Plugin support Rename
-#define CTMS_CHANGEICON	0x0004		// Plugin support "Change Icon"
-#define CTMS_HOVERRUN	0x0020		// Plugin support "Run on mouse hover" feature
-#define CTMS_HOTKEY		0x40		// change the hotkey
-#define CTMS_FINDTARGET	0x0080		// Plugin support "Find Target" feature
-#define CTMS_OPENFOLDER	0x0100		// Plugin support "Open Folder" feature
-#define CTMS_NODELETE	0x0200		
-#define CTMS_RESETICON	0x0800		// Plugin support "Reset Icon" feature
-#define CTMS_SETIMAGE	0x1000		// Plugin support "Set Button Image"
-#define CTMS_ABOUT		0x2000		// Plugin support "About"
-#define CTMS_DELETE		0x4000		// Plugin support "Delete"*/
-#endif
-
 // tlbInsertMenuStringItem:checkStyle
 #define CHK_STYLE_NONE	0
 #define CHK_STYLE_CHECK	1
 #define CHK_STYLE_RADIO	2
-
-//Button states
-#define BTN_S_PUSHED	0x01
-#define BTN_S_SELECTED	0x02
-#define BTN_S_INMENU	0x04
-#define BTN_S_INACTION	0x08
 
 //Return flags for ReadChanges
 #define READ_CHANGES_RESORT		0x0100	//Ask for reorder items
 #define READ_CHANGES_LOADICONS	0x0200	//Ask for loading icons
 #define READ_CHANGES_RECALC		0x0300	//Ask for recalc menu/toolbar layout in case of size change
 #define READ_CHANGES_REDRAW		0x0400	//Ask for redraw button
-
-//for TBTN_INVOKE_GETMENUFLAGS
-#define MENU_F_NORENAME				0x00001
-#define MENU_F_NOAUTOSHOW			0x00002
-#define MENU_F_NOTSHOWONCLICK		0x00004
-#define MENU_F_RUNONCLICK			0x00008
-#define MENU_F_SUPPORT_DELAYED		0x00010
-#define MENU_F_CHILDRENSORT			0x00020
-#define MENU_F_VARHEIGHT			0x00040
-#define MENU_F_DEFAULTWRAP			0x00080
-
-//for TBTN_INVOKE_GETBUTTONTYPE
-#define TS_ITEM_SHOWTEXT			0x000800
-#define TS_ITEM_ALWAYSBTN			0x001000
-#define TS_ITEM_EXPANDMARK			0x002000
-#define TS_ITEM_RUNMARK				0x004000
-#define TS_ITEM_ICONONLY			0x008000
-#define TS_ITEM_ONTOOLBAR			0x000100
-#define TS_ITEM_INMENU				0x010000
-#define TS_ITEM_NOICON				0x020000
-#define TS_ITEM_NOTEXT				0x040000
-#define TS_ITEM_TEAROFF				0x080000
 
 // GetStyle constants
 #define CTS_LARGEICONS				0x1
@@ -326,19 +263,5 @@ extern CTlbButton*	CreatePlugin();
 
 // some other functions
 extern BOOL			isVista();
-
-// flags for CTlbContainer::drawText
-#define	DTF_DRAWGLOW			0x01	// always draw glow
-#define	DTF_NOGLOW				0x02	// don't draw glow
-#define	DTF_GLOWCOLOR			0x04	// glowColor is valid
-#define	DTF_COLOR				0x08	// color is valid
-#define	DTF_GLOWSIZE			0x10	// glow size is valid
-#define	DTF_FORCETRANSPARENTDC	0x20
-#define	DTF_SHADOW				0x40
-
-// folder type for CONTAINER_CMD_GETFOLDER
-#define FOLDER_TYPE_TLBDLL			0
-#define FOLDER_TYPE_USERPROFILE		1
-#define FOLDER_TYPE_COMMONPROFILE	2
 
 extern HINSTANCE	g_hInst;
