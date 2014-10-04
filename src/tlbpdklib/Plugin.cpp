@@ -304,6 +304,31 @@ STDMETHODIMP CPlugin::Invoke(DWORD id, WPARAM wParam, LPARAM lParam)
 {
 	switch(id)
 	{
+	case TBTN_INVOKE_QUERY_VERBS:
+		{
+			VERB::vector verbs;
+			m_btn->QueryVerbs(verbs);
+			if(!verbs.empty())
+			{
+				int		count	= (int) verbs.size();
+				LPWSTR* strings = (LPWSTR*) CoTaskMemAlloc(sizeof(LPWSTR) * count * 2);
+				for(int i = 0; i < count; i++)
+				{
+					strings[i * 2] = (LPWSTR) CoTaskMemAlloc(sizeof(WCHAR) * (verbs[i].text.length() + 1));
+					lstrcpy(strings[i * 2], verbs[i].text.c_str());
+					strings[i * 2 + 1] = (LPWSTR) CoTaskMemAlloc(sizeof(WCHAR) * (verbs[i].verb.length() + 1));
+					lstrcpy(strings[i * 2 + 1], verbs[i].verb.c_str());
+				}
+				((int*) wParam)[0]	= count;
+				((LPWSTR**)lParam)[0]	= strings;
+			}
+		}
+		return S_OK;
+	case TBTN_INVOKE_RUN_VERB:
+		{
+			m_btn->RunVerb((LPCWSTR) lParam, (int) wParam);
+		}
+		return S_OK;
 	case TBTN_INVOKE_GET_TIP_FLAGS:
 		{
 			int idx = (int) wParam;

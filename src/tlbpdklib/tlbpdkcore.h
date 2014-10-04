@@ -6,6 +6,7 @@
 #include "tlbif.h"
 #include <olectl.h>
 #include <tlbpdk.h>
+#include <vector>
 
 #define TLB_PDK_CORE
 

@@ -89,6 +89,25 @@ struct ARRANGE_MENU_DATA
     LPWSTR		name;
 };
 
+struct VERB
+{
+	typedef std::vector<VERB>	vector;
+
+	std::wstring text;
+	std::wstring verb;
+
+	VERB(const VERB& v)
+	{
+		text = v.text;
+		verb = v.verb;
+	}
+	VERB& operator=(const VERB& v)
+	{
+		text = v.text;
+		verb = v.verb;
+	}
+};
+
 class CTxDIB;
 
 // Plugin button class
@@ -144,6 +163,8 @@ public:
 	virtual BOOL SupportSearchMenu();
 	virtual BOOL isValidViewStyle(UINT viewStyle);
 	virtual BOOL applyMargins();
+	virtual void QueryVerbs(VERB::vector& verbs);
+	virtual void RunVerb(LPCWSTR verb, int tip_idx);
 
 	//Child window support
 	virtual void OnShow();

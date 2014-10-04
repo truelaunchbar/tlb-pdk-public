@@ -625,3 +625,15 @@ BOOL CTlbButton::OnTipClick( int tipID, LPCWSTR url )
 {
 	return FALSE;
 }
+
+
+void CTlbButton::QueryVerbs( VERB::vector& verbs )
+{
+	
+}
+
+
+void CTlbButton::RunVerb( LPCWSTR verb, int tip_idx )
+{
+
+}

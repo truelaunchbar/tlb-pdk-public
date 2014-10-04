@@ -285,6 +285,8 @@
 #define TBTN_INVOKE_GET_TIP_FLAGS			67  // wParam - zero based tooltip index, (UINT*) lParam - return flags TIP_F_*
 #define TBTN_INVOKE_ON_CLICK_TIP			68  // wParam - zero based tooltip index, (LPCWSTR) lParam - anchor url
 #define TBTN_INVOKE_GET_TIP_FULL_HTML		69  // wParam - zero based tooltip index, (LPWSTR*) lParam - Text of tooltip use CoTaskMemAlloc to allocate memory
+#define TBTN_INVOKE_QUERY_VERBS				70  // (int*) wParam - return verbs count here, (LPWSTR**) lParam - array of the verbs (first string: Name, second string: verb)
+#define TBTN_INVOKE_RUN_VERB				71  // (LPCWSTR) lParam - verb string
 
 //Register
 extern BOOL RegisterPlugin(HINSTANCE g_hInst, CLSID clsid, LPSTR lpszTitle);
