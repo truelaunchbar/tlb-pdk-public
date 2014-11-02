@@ -96,6 +96,21 @@ struct VERB
 	std::wstring text;
 	std::wstring verb;
 
+	VERB()
+	{
+
+	}
+	VERB(LPCWSTR txt, LPCWSTR vrb)
+	{
+		if(txt)
+		{
+			text = txt;
+		}
+		if(vrb)
+		{
+			verb = vrb;
+		}
+	}
 	VERB(const VERB& v)
 	{
 		text = v.text;
@@ -105,6 +120,7 @@ struct VERB
 	{
 		text = v.text;
 		verb = v.verb;
+		return *this;
 	}
 };
 
