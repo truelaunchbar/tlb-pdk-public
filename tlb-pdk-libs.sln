@@ -1,23 +1,22 @@
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tlbpdklib", "src\tlbpdklib\tlbpdklib.vcproj", "{91DC0F49-1D84-4909-94DC-0E31CDF5A5F6}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E1F9B991-4586-4378-84E6-F0C986E81F3A} = {E1F9B991-4586-4378-84E6-F0C986E81F3A}
-	EndProjectSection
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tlbpdklib", "src\tlbpdklib\tlbpdklib.vcxproj", "{91DC0F49-1D84-4909-94DC-0E31CDF5A5F6}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TLBPDK", "src\TLBPDK\TLBPDK.vcproj", "{E1F9B991-4586-4378-84E6-F0C986E81F3A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TLBPDK", "src\TLBPDK\TLBPDK.vcxproj", "{E1F9B991-4586-4378-84E6-F0C986E81F3A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TxDIB", "src\txdib\TxDIBlib.vcproj", "{E94EC1FA-DBB9-4D02-B190-F549BD3E1EC9}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TxDIB", "src\txdib\TxDIBlib.vcxproj", "{E94EC1FA-DBB9-4D02-B190-F549BD3E1EC9}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "httpReader", "src\httpReader\httpReader.vcproj", "{37B10AB8-A2ED-4CF9-8B90-6BB6818A52F7}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "httpReader", "src\httpReader\httpReader.vcxproj", "{37B10AB8-A2ED-4CF9-8B90-6BB6818A52F7}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XUIlib", "src\xuilib\src\XUIlib.vcproj", "{D04C19CF-EC95-48D8-A8FE-18A62865700B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XUIlib", "src\xuilib\src\XUIlib.vcxproj", "{D04C19CF-EC95-48D8-A8FE-18A62865700B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tlbskinslib", "src\tlbskinslib\tlbskinslib.vcproj", "{8CAE3999-2FE7-4C3A-A674-554E52DCD068}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tlbskinslib", "src\tlbskinslib\tlbskinslib.vcxproj", "{8CAE3999-2FE7-4C3A-A674-554E52DCD068}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib", "src\zlib\zlib.vcproj", "{33134F61-C1AD-4B6F-9CEA-503A9F140C52}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib", "src\zlib\zlib.vcxproj", "{33134F61-C1AD-4B6F-9CEA-503A9F140C52}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "simpledib", "src\simpledib\simpledib.vcproj", "{23740D61-AB4D-4F6B-8E5B-64D42A19173C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "simpledib", "src\simpledib\simpledib.vcxproj", "{23740D61-AB4D-4F6B-8E5B-64D42A19173C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,8 +84,8 @@ Global
 		{33134F61-C1AD-4B6F-9CEA-503A9F140C52}.Release|x64.Build.0 = Release|x64
 		{23740D61-AB4D-4F6B-8E5B-64D42A19173C}.Debug|Win32.ActiveCfg = Debug|Win32
 		{23740D61-AB4D-4F6B-8E5B-64D42A19173C}.Debug|Win32.Build.0 = Debug|Win32
-		{23740D61-AB4D-4F6B-8E5B-64D42A19173C}.Debug|x64.ActiveCfg = Debug|Win32
-		{23740D61-AB4D-4F6B-8E5B-64D42A19173C}.Debug|x64.Build.0 = Debug|Win32
+		{23740D61-AB4D-4F6B-8E5B-64D42A19173C}.Debug|x64.ActiveCfg = Debug|x64
+		{23740D61-AB4D-4F6B-8E5B-64D42A19173C}.Debug|x64.Build.0 = Debug|x64
 		{23740D61-AB4D-4F6B-8E5B-64D42A19173C}.Release|Win32.ActiveCfg = Release|Win32
 		{23740D61-AB4D-4F6B-8E5B-64D42A19173C}.Release|Win32.Build.0 = Release|Win32
 		{23740D61-AB4D-4F6B-8E5B-64D42A19173C}.Release|x64.ActiveCfg = Release|x64
