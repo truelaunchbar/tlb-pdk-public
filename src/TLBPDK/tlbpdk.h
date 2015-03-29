@@ -32,6 +32,8 @@
 #define FOLDER_TYPE_TLBDLL			0
 #define FOLDER_TYPE_USERPROFILE		1
 #define FOLDER_TYPE_COMMONPROFILE	2
+#define FOLDER_TYPE_TOOLBARS		4
+#define FOLDER_TYPE_STD_TOOLBAR		5
 
 
 // constants for ITlbContainer::Invoke
