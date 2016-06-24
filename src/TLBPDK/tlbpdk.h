@@ -295,3 +295,5 @@ extern BOOL RegisterPlugin(HINSTANCE g_hInst, CLSID clsid, LPSTR lpszTitle);
 extern BOOL UnregisterPlugin(CLSID clsid);
 extern CATID CATID_TLBBUTTONS;
 
+// QueryStatus for ITrueLaunchBar interface
+#define TLBID_DPIAUTOSCALE		1
