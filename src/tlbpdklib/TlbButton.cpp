@@ -637,3 +637,21 @@ void CTlbButton::RunVerb( LPCWSTR verb, int tip_idx )
 {
 
 }
+
+
+tlb_jumplist::vector CTlbButton::GetJumplist(int tipid)
+{
+	return tlb_jumplist::vector();
+}
+
+void CTlbButton::RunJumpListItem(int tipid, int group_idx, int item_idx)
+{
+
+}
+
+void* CTlbButton::GetJumplistIcon(int tipid, int group_idx, int item_idx, int& width, int& height)
+{
+	width = 0;
+	height = 0;
+	return NULL;
+}

@@ -304,6 +304,68 @@ STDMETHODIMP CPlugin::Invoke(DWORD id, WPARAM wParam, LPARAM lParam)
 {
 	switch(id)
 	{
+	case TBTN_INVOKE_RUN_JUMPLIST:
+		{
+			JUMPLIST_IDX* idx = (JUMPLIST_IDX*)lParam;
+			int tipID = (int)wParam;
+			m_btn->RunJumpListItem(tipID, idx->group_idx, idx->item_idx);
+		}
+		return S_OK;
+	case TBTN_INVOKE_GET_JUMPLIST_ICON:
+		{
+			JUMPLIST_IDX* jl = (JUMPLIST_IDX*)wParam;
+			DIB_IMAGE* img = (DIB_IMAGE*)lParam;
+			img->bits = m_btn->GetJumplistIcon(img->img_id, jl->group_idx, jl->item_idx, img->width, img->height);
+		}
+		return S_OK;
+	case TBTN_INVOKE_GET_JUMPLIST:
+		{
+			JUMPLIST_ARRAY* jl_array = (JUMPLIST_ARRAY*)lParam;
+			int tipID = (int)wParam;
+
+			tlb_jumplist::vector jlst = m_btn->GetJumplist(tipID);
+			jl_array->count = jlst.size();
+			if (jlst.empty())
+			{
+				jl_array->jumplists = NULL;
+			}
+			else
+			{
+				jl_array->jumplists = (JUMPLIST*)CoTaskMemAlloc(sizeof(JUMPLIST) * jlst.size());
+				for (size_t i = 0; i < jlst.size(); i++)
+				{
+					jl_array->jumplists[i].name = NULL;
+					if (!jlst[i].name.empty())
+					{
+						jl_array->jumplists[i].name = (LPWSTR)CoTaskMemAlloc((jlst[i].name.length() + 1) * sizeof(WCHAR));
+						lstrcpy(jl_array->jumplists[i].name, jlst[i].name.c_str());
+					}
+					jl_array->jumplists[i].count = jlst[i].items.size();
+					jl_array->jumplists[i].type = jlst[i].type;
+					if (jl_array->jumplists[i].count)
+					{
+						jl_array->jumplists[i].items = (LPWSTR*)CoTaskMemAlloc(jlst[i].items.size() * sizeof(LPWSTR*));
+						for (size_t j = 0; j < jlst[i].items.size(); j++)
+						{
+							if (jlst[i].items[j].empty())
+							{
+								jl_array->jumplists[i].items[j] = NULL;
+							}
+							else
+							{
+								jl_array->jumplists[i].items[j] = (LPWSTR)CoTaskMemAlloc((jlst[i].items[j].length() + 1) * sizeof(WCHAR));
+								lstrcpy(jl_array->jumplists[i].items[j], jlst[i].items[j].c_str());
+							}
+						}
+					}
+					else
+					{
+						jl_array->jumplists[i].items = NULL;
+					}
+				}
+			}
+		}
+		return S_OK;
 	case TBTN_INVOKE_QUERY_VERBS:
 		{
 			VERB::vector verbs;

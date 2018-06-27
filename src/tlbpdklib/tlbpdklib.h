@@ -124,6 +124,26 @@ struct VERB
 	}
 };
 
+struct tlb_jumplist
+{
+	typedef std::vector<tlb_jumplist> vector;
+
+	uint32_t					type;
+	std::wstring				name;
+	std::vector<std::wstring>	items;
+
+	tlb_jumplist() : type(0){}
+	tlb_jumplist(const tlb_jumplist& val) :
+		name(val.name),
+		items(val.items),
+		type(val.type){}
+	tlb_jumplist(tlb_jumplist&& val) :
+		name(std::move(val.name)),
+		items(std::move(val.items)),
+		type(std::move(val.type)){}
+};
+
+
 class CTxDIB;
 
 // Plugin button class
@@ -256,7 +276,9 @@ public:
 	virtual BOOL OnSysKeyUp(WPARAM wParam, LPARAM lParam);
 	virtual BOOL OnSysChar(WPARAM wParam, LPARAM lParam);
 	virtual BOOL OnSetCursor(WPARAM wParam, LPARAM lParam);
-
+	virtual tlb_jumplist::vector GetJumplist(int tipid);
+	virtual void RunJumpListItem(int tipid, int group_idx, int item_idx);
+	virtual void* GetJumplistIcon(int tipid, int group_idx, int item_idx, int& width, int& height);
 
 	void tlbInsertMenuStringItem(HMENU		hMenu, 
 									UINT		ID, 
