@@ -5,6 +5,7 @@
 #include <ole2.h>
 #include "tlbif.h"
 #include <olectl.h>
+#include <stdint.h>
 
 #define HOTKEY_MOD_SHIFT	0x0100
 #define HOTKEY_MOD_CONTROL	0x0200
@@ -172,6 +173,8 @@
 #define TS_ITEM_IV_MENUITEM			0x0019
 #define TS_ITEM_IV_SUBMENU			0x001A
 
+#define TS_ITEM_MAX					TS_ITEM_IV_SUBMENU
+
 #define TS_ITEM_SHOWTEXT			0x000800
 #define TS_ITEM_ALWAYSBTN			0x001000
 #define TS_ITEM_EXPANDMARK			0x002000
@@ -289,6 +292,29 @@
 #define TBTN_INVOKE_GET_TIP_FULL_HTML		69  // wParam - zero based tooltip index, (LPWSTR*) lParam - Text of tooltip use CoTaskMemAlloc to allocate memory
 #define TBTN_INVOKE_QUERY_VERBS				70  // (int*) wParam - return verbs count here, (LPWSTR**) lParam - array of the verbs (first string: Name, second string: verb)
 #define TBTN_INVOKE_RUN_VERB				71  // (LPCWSTR) lParam - verb string
+#define TBTN_INVOKE_GET_JUMPLIST			72  // (JUMPLIST_ARRAY*) lParam Jumplists array. (int) wParam - zero based tooltip index. Use CoTaskMemFree to delete pointers.
+#define TBTN_INVOKE_RUN_JUMPLIST			73  // (JUMPLIST_IDX*) lParam - jumplist id, (int) lParam - zero based tooltip index.
+#define TBTN_INVOKE_GET_JUMPLIST_ICON		74  // (DIB_IMAGE*) lParam - image (DIB_IMAGE::img_id is the tipid). (JUMPLIST_IDX*) wParam - jumplist item ID.
+
+struct JUMPLIST
+{
+    LPWSTR      name;
+    uint32_t    type;
+    LPWSTR*     items;
+    int         count;
+};
+
+struct JUMPLIST_ARRAY
+{
+    int         count;
+    JUMPLIST*   jumplists;
+};
+
+struct JUMPLIST_IDX
+{
+    int group_idx;
+    int item_idx;
+};
 
 //Register
 extern BOOL RegisterPlugin(HINSTANCE g_hInst, CLSID clsid, LPSTR lpszTitle);
