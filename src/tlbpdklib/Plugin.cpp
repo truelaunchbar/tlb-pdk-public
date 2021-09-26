@@ -465,6 +465,12 @@ STDMETHODIMP CPlugin::Invoke(DWORD id, WPARAM wParam, LPARAM lParam)
 			*ret = m_btn->applyMargins();
 		}
 		return S_OK;
+	case TBTN_INVOKE_SUPPORT_HIDPI:
+		{
+			LPBOOL ret = (LPBOOL)lParam;
+			*ret = m_btn->SupportsHIDPI();
+		}
+		return S_OK;
 	case TBTN_INVOKE_VALIDVIEWSTYLE:
 		{
 			LPBOOL ret = (LPBOOL) lParam;
@@ -1193,6 +1199,33 @@ BOOL CPlugin::showHotkey()
 	BOOL ww = FALSE;
 	m_container->Invoke(CONTAINER_CMD_SHOWHOTKEY, 0, (LPARAM) &ww);
 	return ww;
+}
+
+int CPlugin::scaleSize(int size)
+{
+	m_container->Invoke(CONTAINER_CMD_SCALE, 0, (LPARAM)&size);
+	return size;
+}
+
+int CPlugin::scaleSizeDown(int size)
+{
+	m_container->Invoke(CONTAINER_CMD_SCALEDOWN, 0, (LPARAM)&size);
+	return size;
+}
+
+
+HFONT CPlugin::GetItemFont(BOOL bold, BOOL italic)
+{
+	ITEMFONT_REQUEST fr;
+	fr.bold = bold;
+	fr.italic = italic;
+	fr.hFont = NULL;
+	m_container->Invoke(CONTAINER_CMD_GETITEMFONT, 0, (LPARAM)&fr);
+	if (fr.hFont == NULL)
+	{
+		return GetItemFont();
+	}
+	return fr.hFont;
 }
 
 void CPlugin::GetFolder( LPWSTR path, UINT folder_type )

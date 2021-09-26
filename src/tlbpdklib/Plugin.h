@@ -51,6 +51,7 @@ public:
 	virtual int			GetIconSize();
 	virtual DWORD		GetViewMode();
 	virtual HFONT		GetItemFont();
+	virtual HFONT		GetItemFont(BOOL bold, BOOL italic);
 	virtual COLORREF	GetTextColor();
 	virtual COLORREF	GetTextGlowColor();
 	virtual void		GetTextMargins(LPRECT rcMargins);
@@ -91,4 +92,7 @@ public:
 
 	virtual BOOL		tboShowCtxIcons();
 	virtual BOOL		selectIcon(HWND parent, LPWSTR iconLocation);
+
+	virtual int			scaleSize(int size);
+	virtual int			scaleSizeDown(int size);
 };

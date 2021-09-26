@@ -13,6 +13,7 @@ interface CTlbContainer
 	virtual DWORD		GetViewMode() = 0;
 	virtual DWORD		GetStyle() = 0;
 	virtual HFONT		GetItemFont() = 0;
+	virtual HFONT		GetItemFont(BOOL bold, BOOL italic) = 0;
 	virtual COLORREF	GetTextColor() = 0;
 	virtual COLORREF	GetTextGlowColor() = 0;
 	virtual void		GetTextMargins(LPRECT rcMargins) = 0;
@@ -49,6 +50,8 @@ interface CTlbContainer
 	virtual void		GetFolder(LPWSTR path, UINT folder_type) = 0;
 	virtual BOOL		IsPortable() = 0;
 	virtual void		AddTipImage(int tipID, LPCWSTR url, void* bits, int width, int height, BOOL redraw_only) = 0;
+	virtual int			scaleSize(int size) = 0;
+	virtual int			scaleSizeDown(int size) = 0;
 };
 
 class CTlbButton;
@@ -220,6 +223,7 @@ public:
 	virtual void* GetTipImage(int tipID, LPCWSTR url, int& width, int& height, BOOL redraw_on_ready);
 	virtual UINT GetTipFlags(int tipID);
 	virtual BOOL OnTipClick(int tipID, LPCWSTR url);
+	virtual BOOL SupportsHIDPI();
 
 	virtual BOOL Save(IStream *data);
 	virtual BOOL Load(IStream *data);

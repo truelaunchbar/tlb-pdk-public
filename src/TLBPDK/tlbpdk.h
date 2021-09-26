@@ -72,6 +72,10 @@
 #define CONTAINER_CMD_ISPORTABLE			33 //
 #define CONTAINER_CMD_TIP_IMAGE_READY		34 //(LPWSTR) lParams - image url. (DIB_IMAGE*) wParam
 #define CONTAINER_CMD_SHOWHOTKEY			35 //lParam - LPBOOL
+#define CONTAINER_CMD_SCALE					36 //lParam - LPDWORD [in, out]
+#define CONTAINER_CMD_SCALEDOWN				37 //lParam - LPDWORD [in, out]
+#define CONTAINER_CMD_GETITEMFONT			38 //lParam - ITEMFONT_REQUEST* [in, out]
+#define CONTAINER_CMD_GETFONT				39 //lParam - FONT_REQUEST* [in, out]
 
 // constants for ITlbContainer::UpdateButtonInfo
 #define UPDATE_SIZE					0x01
@@ -296,6 +300,8 @@
 #define TBTN_INVOKE_RUN_JUMPLIST			73  // (JUMPLIST_IDX*) lParam - jumplist id, (int) lParam - zero based tooltip index.
 #define TBTN_INVOKE_GET_JUMPLIST_ICON		74  // (DIB_IMAGE*) lParam - image (DIB_IMAGE::img_id is the tipid). (JUMPLIST_IDX*) wParam - jumplist item ID.
 
+#define TBTN_INVOKE_SUPPORT_HIDPI			80  // (LBOOL*) lParam - TRUE if plugin supports HDPI mode, FALSE to autoscale plugin
+
 struct JUMPLIST
 {
     LPWSTR      name;
@@ -314,6 +320,22 @@ struct JUMPLIST_IDX
 {
     int group_idx;
     int item_idx;
+};
+
+struct ITEMFONT_REQUEST
+{
+	BOOL	bold;
+	BOOL	italic;
+	HFONT	hFont;
+};
+
+struct FONT_REQUEST
+{
+	WCHAR	faceName[32];
+	int		size;
+	BOOL	bold;
+	BOOL	italic;
+	HFONT	hFont;
 };
 
 //Register

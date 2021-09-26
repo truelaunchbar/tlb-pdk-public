@@ -385,6 +385,13 @@ int CTlbButton::GetTipsIconSize(int tipID)
 	return 32;
 }
 
+
+BOOL CTlbButton::SupportsHIDPI()
+{
+	return TRUE;
+}
+
+
 void CTlbButton::DrawTipsIcon(HDC hDC, POINT pt, int tipID)
 {
 }
