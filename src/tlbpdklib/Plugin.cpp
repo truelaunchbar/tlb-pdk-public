@@ -882,7 +882,7 @@ DWORD CPlugin::GetButtonType()
 
 int	CPlugin::GetIconSize()
 {
-	int szIcon = 16;
+	int szIcon = scaleSize(16);
 	CONTAINER_PARAMS cParams = {0, 0, 0};
 	cParams.cbSize = sizeof(CONTAINER_PARAMS);
 	if(m_container)

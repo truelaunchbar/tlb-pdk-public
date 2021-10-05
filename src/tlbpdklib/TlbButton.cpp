@@ -382,7 +382,7 @@ UINT CTlbButton::GetMenuFlags()
 
 int CTlbButton::GetTipsIconSize(int tipID)
 {
-	return 32;
+	return m_container->scaleSize(32);
 }
 
 
